@@ -1,16 +1,33 @@
-const gameBoard = document.querySelector("#gameBoard");
-const infoDisplay = document.querySelector("#Info");
+const gameBoard = document.querySelector("#gameboard");
+
 const startCells = [
-     "", "", "", "", "", "", "", "", "",
+    "", "", "", "", "", "", "", "", ""
+
 ]
 
-function createBoard () {
-    startCells.forEach((cell,index) => {
+function createBoard() {
+    startCells.forEach((_cell,index)=>{
         const cellElement = document.createElement("div");
         cellElement.classList.add("square")
-        gameBoard.append(cellElement)
+        cellElement.id = index;
+        cellElement.addEventListener("click", addGo)
+
+        gameBoard.append(cellElement);
+        
+
+
+
+
+
+
     })
 
-}
+    function addGo(e){
+        const goDisplay  = document.createElement("div");
+        goDisplay.classList.add("circle");
+        e.target.append(goDisplay);
+        
+    }
 
+}
 createBoard();
