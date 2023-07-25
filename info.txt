@@ -1,0 +1,2 @@
+A. Make the buttons clickable, and make them show x or o, 
+B. update h2 to show players turns when they change.
