@@ -1,75 +1,29 @@
-const gameBoard = document.querySelector("#gameboard");
-console.log(gameBoard)
-const infoDisplay = document.querySelector("#info");
+const gameSquares = document.querySelectorAll('.game-squares');
+const boardWidth = 3;
+let currentPlayer = 1; // intial player, player 1.
+gameSquares.forEach((gameSquare, i) => {
+    gameSquare.addEventListener('click', () => {
+        const row = Math.floor( i / boardWidth);
+        const col = i % boardWidth;
+        
 
-const startCells = [
-    "", "",  "", "",  "", "",  "", "",  ""
-];
+        makeMove(gameSquare,row,col);
 
-let go = "circle"
-
-infoDisplay.textContent = "Circle goes first"
-
-function createBoard () {
-
-    startCells.forEach((_cell, index )=>{
-        const cellElement = document.createElement("div")
-        cellElement.classList.add("square");
-        cellElement.id = index
-        cellElement.addEventListener("click", addGo);
-        gameBoard.append(cellElement);
     })
-}
-
-
-function addGo(e){
-    const goDisplay = document.createElement("div");
-    goDisplay.classList.add(go)
-    e.target.append(goDisplay);
-    go = go === "circle" ? "cross" : "circle"
-    infoDisplay.textContent = "it is now " + go + "'s go."
-    e.target.removeEventListener("click", addGo)
-checkScore()
-}
-
-
-function checkScore() {
-    const allSquares = document.querySelectorAll(".square");
-    console.log(allSquares)
-    const winningCombos = [
-        [0,1,2], [3,4,5], [6,7,8],
-        [0,3,6], [1,4,7], [2,5,8],
-        [0,4,8], [2,4,6]
-    ]
-
-    console.log(allSquares[4])
-
-
-winningCombos.forEach(array => {
-    const circleWins = array.every(cell =>
-         allSquares[cell].firstChild?.classList.contains("circle"))
-
-
-    if(circleWins){
-        infoDisplay.textContent = "Circle Wins!"
-        allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
-        return 
-    }
 
 })
 
-winningCombos.forEach(array => {
-    const crossWins = array.every(cell =>
-         allSquares[cell].firstChild?.classList.contains("cross"))
+
+function makeMove(gameSquare, row, col) {
+    gameSquare.textContent = currentPlayer = 1 ? 'X': "O";
+    gameSquare.disabled = true;
+
+    currentPlayer = currentPlayer === 1 ? 2 : 1; // change current player, update the heading (If the currentPlayer is === 1. change it to 2, otherwise if it was already 2, change back to 1)
+    setCurrentPlayerHeader()
+}
 
 
-    if(circleWins){
-        infoDisplay.textContent = "Cross Wins!"
-        allSquares.forEach(square => square.replaceWith(square.cloneNode(true)))
-        return 
-    }
+function setCurrentPlayerHeader() { // use the current player, to update the text on the screen.
 
-})
 
 }
-createBoard();
