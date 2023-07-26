@@ -1,11 +1,16 @@
+
+body{
+    background-color: #333;
+    font-family: 'Borel', cursive;
+}
 #board{
     width:280px;
     min-height:450px;
     border-radius:10%;
     padding:0 20px 20px 20px;
     text-align: center;
-    background-color: grey;
     color:white;
+    margin:0 auto;
 }
 
 h1{
@@ -26,9 +31,9 @@ button{
     font-weight:bold;
     border-radius:8px;
     cursor:pointer;
-    background-color:#6e072d;
+    background-color:#ccd0d8;
     border-color:#636363;
-    color:white;
+    color:rgb(14, 19, 54);
 }
 .game-square{
     font-size:50px;
@@ -45,4 +50,17 @@ button{
     font-size:24px;
     padding:12px;
     margin:12px auto;
+}
+
+
+@media(max-width:750px){
+    *{
+        margin:0;
+        padding:0;
+    }
+    #board{
+        max-width:250px;
+        margin-top:20px;
+    }
+
 }
