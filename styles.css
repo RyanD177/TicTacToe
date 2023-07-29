@@ -12,7 +12,9 @@ body{
     color:white;
     margin:0 auto;
 }
-
+span{
+    color:dodgerblue;
+}
 h1{
     padding-top:12px;
 
@@ -31,7 +33,7 @@ button{
     font-weight:bold;
     border-radius:8px;
     cursor:pointer;
-    background-color:#ccd0d8;
+    background-color:#c3c7ce;
     border-color:#636363;
     color:rgb(14, 19, 54);
 }
